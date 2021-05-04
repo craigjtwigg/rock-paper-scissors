@@ -1,8 +1,5 @@
-console.log(game());
-
 function game() {
-
-// random selection using math.floor(math.random() * 3)) and reassigning values to r/p/s //
+// random selection and reassigning values to r/p/s //
 function computerPlay() {
     let number = (Math.floor(Math.random() * 3));
     if (number === 0) {
@@ -53,3 +50,4 @@ function playRound(computerSelection, userSelection) {
 } 
 }} 
 
+console.log(game());
