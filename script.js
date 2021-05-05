@@ -1,53 +1,64 @@
-function game() {
-// random selection and reassigning values to r/p/s //
-function computerPlay() {
-    let number = (Math.floor(Math.random() * 3));
+// SCORE VARIABLES //
+
+let userScore = 0;
+let computerScore = 0;
+
+// START CPU SELECTION // 
+
+    function computerPlay() {
+    const number = (Math.floor(Math.random() * 3));
     if (number === 0) {
         return "rock";
     } else if (number === 1) {
         return "paper";
-    } else return "scissors";
+    } else return "scissors"; 
 }
 
-let computerSelection = computerPlay();
-let userSelection;
-let computerScore;
-let userScore;
-{
-    computerScore = 0;
-    userScore = 0;
-    for (let i=0; i<5; i++) {
-        userInput();
-        computerPlay();
-    }
+// END CPU SELECTION //
 
-// Prompt for user to select r/p/s with a .toLowerCase method //
-function userInput() {
-   userSelection = prompt("Rock, Paper or Scissors?", "");
+
+// START ROUND FUNCTION //
+
+    function playRound(computerSelection, userSelection) {
+        computerPlay();
+    if (computerSelection === userSelection) {
+        return `Oooh, you've cancelled eachother out! It's a tie! PLAYER ${userScore} vs. CPU ${computerScore}`;
+    }
+    else if (computerSelection === "rock" && userSelection === "scissors" || 
+    computerSelection === "scissors" && userSelection === "paper" || 
+    computerSelection == "paper" && userSelection === "rock") {
+        ++computerScore;
+        return `Oh dear! Computer wins the round! PLAYER ${userScore} vs. CPU ${computerScore}`;
+    } else ++userScore;
+    return `Yes! You Win the round! PLAYER ${userScore} vs. CPU ${computerScore}`;
+} 
+ // END ROUND FUNCTION //
+
+ // START GAME FUNCTION // 
+ 
+ function playGame() {
+    for (let i = 0; i < 5; i++) {
+   const computerSelection = computerPlay();
+   let userSelection = prompt("Rock, Paper or Scissors?", "");
     if ((userSelection.toLowerCase() == "rock") ||
     (userSelection.toLowerCase() == "scissors") ||
     (userSelection.toLowerCase() == "paper")) {
         console.log(playRound(computerSelection, userSelection));     
     }
     else { 
-        alert("Oh No! That\'s not a valid input...");
-        userInput();
-} }
+        i-- && alert("Oh No! That\'s not a valid input...");
+} } }
 
-// else / if conditionals for result declerations //
-function playRound(computerSelection, userSelection) {
-    if (computerSelection == userSelection) {
-        return `Oooh, you've cancelled eachother out! It's a tie! PLAYER ${userScore} vs. CPU ${computerScore}`;
+// END GAME FUNCTION //
+
+function winner() {
+    if (userScore > computerScore) {
+        alert(`Your 5 rounds are up! Congratulations you won! PLAYER ${userScore} vs. CPU ${computerScore}`);
     }
-    else if (computerSelection == "rock" && userSelection == "scissors" || 
-    computerSelection == "scissors" && userSelection == "paper" || 
-    computerSelection == "paper" && userSelection == "rock") {
-        ++computerScore;
-        return `Oh dear! Computer wins the round! PLAYER ${userScore} vs. CPU ${computerScore}`;
-    } else ++userScore;
-    return `Yes! You Win the round! PLAYER ${userScore} vs. CPU ${computerScore}`;
-        
-} 
-}} 
-
-console.log(game());
+    else if (userScore < computerScore) {
+        alert(`Boo! The 5 rounds are over and you lost... PLAYER ${userScore} vs. CPU ${computerScore}`);
+}
+    else alert(`After 5 rounds its a tie! PLAYER ${userScore} vs. CPU ${computerScore}`);
+}
+playGame();
+winner();
