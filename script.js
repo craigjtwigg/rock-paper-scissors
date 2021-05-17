@@ -3,9 +3,27 @@
 let userScore = 0;
 let computerScore = 0;
 
-// START CPU SELECTION // 
+// SCORE BOARD AND ROUND RESULT //
 
-    function computerPlay() {
+const container = document.querySelector('.container');
+const results = document.createElement('div');
+results.classList.add('results');
+container.appendChild(results);
+
+// WINNER DECLARATION //
+
+function declareWinner() {
+    if (userScore === 5) {
+        alert(`Yeah! You Win! PLAYER ${userScore} vs. CPU ${computerScore}`);
+    }
+    else if (computerScore === 5) {
+        alert(`Boo! You Lose!... PLAYER ${userScore} vs. CPU ${computerScore}`);
+} }
+
+
+// COMPUTER RANDOM SELECTION // 
+
+function computerPlay() {
     const number = (Math.floor(Math.random() * 3));
     if (number === 0) {
         return "rock";
@@ -14,10 +32,8 @@ let computerScore = 0;
     } else return "scissors"; 
 }
 
-// END CPU SELECTION //
 
-
-// START ROUND FUNCTION //
+// ROUND FUNCTION / GAME LOGIC //
 
     function playRound(computerSelection, userSelection) {
         computerPlay();
@@ -25,40 +41,24 @@ let computerScore = 0;
         return `Oooh, you've cancelled eachother out! It's a tie! PLAYER ${userScore} vs. CPU ${computerScore}`;
     }
     else if (computerSelection === "rock" && userSelection === "scissors" || 
-    computerSelection === "scissors" && userSelection === "paper" || 
-    computerSelection == "paper" && userSelection === "rock") {
+        computerSelection === "scissors" && userSelection === "paper" || 
+        computerSelection === "paper" && userSelection === "rock") {
         ++computerScore;
         return `Oh dear! Computer wins the round! PLAYER ${userScore} vs. CPU ${computerScore}`;
-    } else ++userScore;
+    }   
+    else ++userScore;
+
     return `Yes! You Win the round! PLAYER ${userScore} vs. CPU ${computerScore}`;
 } 
- // END ROUND FUNCTION //
 
- // START GAME FUNCTION // 
- 
- function playGame() {
-    for (let i = 0; i < 5; i++) {
-   const computerSelection = computerPlay();
-   let userSelection = prompt("Rock, Paper or Scissors?", "");
-    if ((userSelection.toLowerCase() == "rock") ||
-    (userSelection.toLowerCase() == "scissors") ||
-    (userSelection.toLowerCase() == "paper")) {
-        console.log(playRound(computerSelection, userSelection));     
-    }
-    else { 
-        i-- && alert("Oh No! That\'s not a valid input...");
-} } }
+// GAMEPLAY - USER SELECTION AND RESULT RETURN // 
 
-// END GAME FUNCTION //
+const selectionButton = document.querySelectorAll('button'); 
+selectionButton.forEach(button => button.addEventListener('click', playGame));
 
-function winner() {
-    if (userScore > computerScore) {
-        alert(`Your 5 rounds are up! Congratulations you won! PLAYER ${userScore} vs. CPU ${computerScore}`);
-    }
-    else if (userScore < computerScore) {
-        alert(`Boo! The 5 rounds are over and you lost... PLAYER ${userScore} vs. CPU ${computerScore}`);
+function playGame(e){
+    let userSelection = (e.target.id); 
+    const computerSelection = computerPlay(); 
+    results.textContent = playRound(userSelection, computerSelection);
+    declareWinner();
 }
-    else alert(`After 5 rounds its a tie! PLAYER ${userScore} vs. CPU ${computerScore}`);
-}
-playGame();
-winner();

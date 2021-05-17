@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+
+    
+        
+     <script>
+         // SCORE VARIABLES //
+
+let userScore = 0;
+let computerScore = 0;
+
+// START CPU SELECTION // 
+
+    function computerPlay() {
+    const number = (Math.floor(Math.random() * 3));
+    if (number === 0) {
+        return "rock";
+    } else if (number === 1) {
+        return "paper";
+    } else return "scissors"; 
+}
+
+// END CPU SELECTION //
+
+
+// START ROUND FUNCTION //
+
+    function playRound(computerSelection, userSelection) {
+        computerPlay();
+    if (computerSelection === userSelection) {
+        return `Oooh, you've cancelled eachother out! It's a tie! PLAYER ${userScore} vs. CPU ${computerScore}`;
+    }
+    else if (computerSelection === "rock" && userSelection === "scissors" || 
+    computerSelection === "scissors" && userSelection === "paper" || 
+    computerSelection == "paper" && userSelection === "rock") {
+        ++computerScore;
+        return `Oh dear! Computer wins the round! PLAYER ${userScore} vs. CPU ${computerScore}`;
+    } else ++userScore;
+    return `Yes! You Win the round! PLAYER ${userScore} vs. CPU ${computerScore}`;
+} 
+ // END ROUND FUNCTION //
+
+ // START GAME FUNCTION // 
+ 
+ function playGame() {
+    for (let i = 0; i < 5; i++) {
+   const computerSelection = computerPlay();
+   let userSelection = prompt("Rock, Paper or Scissors?", "");
+    if ((userSelection.toLowerCase() == "rock") ||
+    (userSelection.toLowerCase() == "scissors") ||
+    (userSelection.toLowerCase() == "paper")) {
+        console.log(playRound(computerSelection, userSelection));     
+    }
+    else { 
+        i-- && alert("Oh No! That\'s not a valid input...");
+} } }
+
+// END GAME FUNCTION //
+
+function winner() {
+    if (userScore > computerScore) {
+        alert(`Your 5 rounds are up! Congratulations you won! PLAYER ${userScore} vs. CPU ${computerScore}`);
+    }
+    else if (userScore < computerScore) {
+        alert(`Boo! The 5 rounds are over and you lost... PLAYER ${userScore} vs. CPU ${computerScore}`);
+}
+    else alert(`After 5 rounds its a tie! PLAYER ${userScore} vs. CPU ${computerScore}`);
+}
+playGame();
+winner();
+     </script>
+    </body>
+</html>
+
+
