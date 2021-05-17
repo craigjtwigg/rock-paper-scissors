@@ -18,7 +18,15 @@ function declareWinner() {
     }
     else if (computerScore === 5) {
         alert(`Boo! You Lose!... PLAYER ${userScore} vs. CPU ${computerScore}`);
-} }
+}}
+
+function reset(){
+    if (computerScore === 5 || userScore ===5){
+    userScore = 0;
+    computerScore= 0;
+    results.textContent = "What are you waiting for? Play again!";
+}}
+
 
 
 // COMPUTER RANDOM SELECTION // 
@@ -51,6 +59,7 @@ function computerPlay() {
     return `Yes! You Win the round! PLAYER ${userScore} vs. CPU ${computerScore}`;
 } 
 
+
 // GAMEPLAY - USER SELECTION AND RESULT RETURN // 
 
 const selectionButton = document.querySelectorAll('button'); 
@@ -61,4 +70,5 @@ function playGame(e){
     const computerSelection = computerPlay(); 
     results.textContent = playRound(userSelection, computerSelection);
     declareWinner();
+    reset();
 }
