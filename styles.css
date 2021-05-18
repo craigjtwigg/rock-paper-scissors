@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Patrick+Hand&display=swap');
+
+*{
+    background-color: black;
+    color: snow;
+    font-family: 'Patrick Hand', cursive;
+    text-align: center;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-template-rows: auto auto auto;
+    grid-template-areas:
+        "heading heading heading"
+        "icons icons icons"
+        "results results results";
+    border: 3px dashed white;   
+    justify-content: center; 
+    align-items: center;
+    height: 100%;
+    margin: 2rem;
+}
+
+.heading {
+    font-size: 2rem;
+    letter-spacing: 0.4rem;
+    grid-area: heading;
+}
+
+.icons {
+    grid-area: icons;
+}
+
+#rock, #paper, #scissors {
+    max-height: 175px;
+    width: auto;
+}
+
+.results {
+    grid-area: results;
+    font-size: 1.5rem;
+    padding: 1rem;
+
+}
+
+@media screen and (max-width: 480px) {
+
+    .heading{
+        font-size: 1.5rem;
+    }
+
+#rock, #paper, #scissors {
+    max-height: 100px;
+    width: auto;
+}
+    
+}
