@@ -9,6 +9,7 @@ const latestResults = document.querySelector('.results');
 const results = document.createElement('div');
 results.classList.add('results');
 latestResults.appendChild(results);
+results.textContent = "Pick your first weapon of choice!";
 
 // WINNER DECLARATION //
 

@@ -18,7 +18,6 @@
     border: 3px dashed white;   
     justify-content: center; 
     align-items: center;
-    height: 100%;
     margin: 2rem;
 }
 
@@ -51,8 +50,8 @@
     }
 
 #rock, #paper, #scissors {
-    max-height: 100px;
-    width: auto;
+    max-width: 70px;
+    height: auto;
 }
     
 }
