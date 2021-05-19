@@ -1,9 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Patrick+Hand&display=swap');
 
-*{
+body, html {
     background-color: black;
     color: snow;
-    font-family: 'Patrick Hand', cursive;
+    font-family: 'Patrick Hand', Verdana;
+    font-size: 16px;
     text-align: center;
 }
 
@@ -54,7 +55,27 @@
     padding: 1rem;
 
 }
+
+.avi {
+    max-height: 100px;
+    width: auto;
+    border: 2px solid tomato;
+    border-radius: 50%;
+}
+
+.cjt {
+    font-family: Bebas Neue;
+}
   
+a {
+    color: tomato;
+    text-decoration: none;
+}
+
+a:hover {
+    color:rgb(245, 137, 118);
+    text-decoration: underline;
+}
 
 @media screen and (max-width: 480px) {
 

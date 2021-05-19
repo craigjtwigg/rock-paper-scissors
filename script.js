@@ -19,6 +19,7 @@ const scoreContainer = document.querySelector('.scoreboard');
 const score = document.createElement('div');
 score.classList.add('score');
 scoreContainer.appendChild(score);
+getScore();
 
 
 
